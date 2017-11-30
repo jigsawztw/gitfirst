@@ -1,0 +1,43 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
+/* 
+Самые-самые
+*/
+
+public class Solution {
+  
+    public static void main(String[] args) throws Exception {
+        ArrayList<String> x = new ArrayList<>();
+        BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
+
+        for(int i=0;i<10;i++){
+            x.add(r.readLine());
+        }
+        String min=x.get(0);
+        String max=x.get(0);
+        for(int i=0;i<9;i++){
+            if(min.length()>x.get(i+1).length()){
+                min = x.get(i+1);
+            }
+        }
+        for(int i=0;i<9;i++){
+            if(max.length()<x.get(i+1).length()){
+                max = x.get(i+1);
+            }
+        }
+
+
+        for(int i=0;i<10;i++){
+            if(x.get(i)==min){
+                System.out.println(min);
+                break;
+            }
+            else if(x.get(i)==max){
+                System.out.println(max);
+                break;
+            }
+        }
+    }}
