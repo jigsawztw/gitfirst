@@ -1,0 +1,31 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.io.IOException;
+
+/* 
+Метод в try..catch
+*/
+
+public class Solution {
+    public static void main(String[] args) {
+        readData();
+    }
+
+    public static void readData(){
+        ArrayList<Integer> x = new ArrayList<>();
+        try {
+            BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+            while(true){
+                x.add(Integer.parseInt(bf.readLine()));
+            }
+        }
+        catch (Exception e){
+            for(Integer f:x){
+                System.out.println(f);
+            }
+        }
+
+    }
+}
