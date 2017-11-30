@@ -1,0 +1,26 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+
+public class Solution {
+    public static void main(String[] args) throws Exception {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        int  x[] = new int [5];
+        for(int i=0;i<5;i++){
+            int y= (Integer.parseInt(reader.readLine()));
+            x[i]=y;
+        }
+        for (int i = x.length - 1; i >= 1; i--) {
+            for (int j = 0; j < i; j++) {
+                if (x[j] > x[j+1]) {
+                    int temp = x[j];
+                    x[j] = x[j+1];
+                    x[j+1] = temp;
+                }
+            }
+            }
+            for(int f: x)
+        System.out.println(f);
+        }
+
+    }
