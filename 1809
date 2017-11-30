@@ -1,0 +1,36 @@
+import java.io.*;
+import java.util.ArrayList;
+/* 
+Реверс файла
+*/
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+/*
+Исправить ошибки
+*/
+public class Solution {
+    public static void main(String[] args) throws IOException{
+        String filename1,filename2;
+        BufferedReader bf =new BufferedReader(new InputStreamReader(System.in));
+        ArrayList<Integer> list  = new ArrayList<>();
+       filename1 =  bf.readLine();
+       filename2 = bf.readLine();
+       bf.close();
+       FileInputStream input = new FileInputStream(filename1);
+       FileOutputStream output = new FileOutputStream(filename2);
+       while(input.available()>0){
+           list.add(input.read());
+           }
+        for(int i=list.size()-1;i>=0;i--){
+            output.write(list.get(i));
+       }
+       input.close();
+       output.close();
+
+
+
+
+    }
+}
