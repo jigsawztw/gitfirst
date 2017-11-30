@@ -1,0 +1,23 @@
+import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.FileInputStream;
+/* 
+Подсчет запятых
+*/
+
+public class Solution {
+    public static void main(String[] args) throws  IOException{
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        FileInputStream input = new FileInputStream(bf.readLine());
+        bf.close();
+        int x=0;
+        while(input.available()>0){
+            if(input.read() ==44){
+                x++;
+            }}
+            input.close();
+            System.out.println(x);
+        
+    }
+}
