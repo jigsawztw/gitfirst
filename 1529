@@ -1,0 +1,52 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+/* 
+Осваивание статического блока
+*/
+
+public class Solution {
+    public static void main(String[] args) throws Exception{
+        System.out.println(result);
+    }
+
+    static {
+       try{reset();
+       }
+       catch (Exception e ){
+
+       }
+    }
+
+    public static Flyable result;
+
+    public static void reset() throws Exception{
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        String x = bf.readLine();
+        if(x.equals("helicopter")){
+            result = new Helicopter();
+        }
+        else if(x.equals("plane")){
+            int a = Integer.parseInt(bf.readLine());
+            result = new Plane(a);
+        }
+        bf.close();
+    }
+public interface Flyable {
+    void fly();
+    }
+public class Helicopter implements Flyable {
+    public void fly(){
+
+        }
+    }
+public class Plane  implements Flyable{
+    public Plane(int passaj){
+
+    }
+    public void fly(){
+
+    }
+  }    
+}
