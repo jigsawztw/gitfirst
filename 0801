@@ -1,0 +1,25 @@
+import java.util.Set;
+/* 
+HashSet из растений
+*/
+import java.util.HashSet;
+
+public class Solution {
+    public static void main(String[] args) throws Exception {
+        HashSet<String> x = new HashSet<>();
+        x.add("арбуз");
+        x.add("банан");
+        x.add("вишня");
+        x.add("груша");
+        x.add("дыня");
+        x.add("ежевика");
+        x.add("жень-шень");
+        x.add("земляника");
+        x.add("ирис");
+        x.add("картофель");
+
+        for(String f:x){
+            System.out.println(f);
+        }
+    }
+}
