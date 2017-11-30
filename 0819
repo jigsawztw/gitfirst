@@ -1,0 +1,36 @@
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Iterator;
+/* 
+Set из котов
+*/
+
+public class Solution {
+    public static class Cat{
+
+    }
+    public static void main(String[] args) {
+        Set<Cat> cats = createCats();
+        cats.remove(cats.iterator().next());
+
+
+
+
+        printCats(cats);
+    }
+
+    public static Set<Cat> createCats() {
+        HashSet <Cat> x = new HashSet<>();
+        for(int i=0;i<3;i++){
+            x.add(new Cat());
+        }
+        return x;
+    }
+
+    public static void printCats(Set<Cat> cats) {
+        for(Cat x:cats){
+            System.out.println(x);
+        }
+    }
+
+}
