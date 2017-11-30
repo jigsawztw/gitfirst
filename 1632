@@ -1,0 +1,92 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Solution {
+    public static void main(String[] args) {
+
+    }
+public interface Message {
+    void showWarning();
+}
+
+    
+    
+    public static List<Thread> threads = new ArrayList<>(5);
+    
+    
+    
+    
+      public static class Thread1 extends Thread{
+
+        public void run() {
+            while(true){
+        }
+    }}
+    public static class Thread2 extends Thread{
+        public void run() {
+            try{
+        if(currentThread().isInterrupted()){
+              throw new InterruptedException();
+        }}
+        catch (InterruptedException e){
+            System.out.println("InterruptedException");
+        }
+        }
+    }
+
+    public static class Thread3 extends Thread{
+        public void run(){
+            try {
+                while(true){
+                    System.out.println("Ура");
+                    Thread.sleep(500);
+               }
+            }
+            catch (InterruptedException e){}
+        }
+
+    }
+
+    public static class Thread4 extends Thread implements Message{
+        public void showWarning(){
+
+        if(currentThread().isAlive())
+            this.interrupt();
+        }
+        public void run(){
+
+    }
+    }
+   public static class Thread5 extends Thread {
+        public void run() {
+            int result=0;
+            try {
+                BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+                while (!isInterrupted()){
+                    String read = reader.readLine();
+                    if (read.equals("N")) this.interrupt();
+                    else {
+                        result += Integer.parseInt(read);
+                    }
+                }
+                throw new InterruptedException();
+            }
+            catch (IOException e){}
+            catch (InterruptedException e)
+            {
+                System.out.println(result);
+            }
+        }
+    }
+    static {
+        threads.add(new Thread1());
+        threads.add(new Thread2());
+        threads.add(new Thread3());
+        threads.add(new Thread4());
+        threads.add(new Thread5());
+    }
+
+    }
