@@ -1,0 +1,30 @@
+import java.util.ArrayList;
+
+/* 
+Список из массивов чисел
+*/
+
+public class Solution {
+    public static void main(String[] args) {
+        ArrayList<int[]> list = createList();
+        printList(list);
+    }
+
+    public static ArrayList<int[]> createList() {
+        ArrayList<int[]> x = new ArrayList<>();
+        x.add(new int[5]);
+        x.add(new int[2]);
+        x.add(new int[4]);
+        x.add(new int[7]);
+        x.add(new int[0]);
+        return x;
+    }
+
+    public static void printList(ArrayList<int[]> list) {
+        for (int[] array : list) {
+            for (int x : array) {
+                System.out.println(x);
+            }
+        }
+    }
+}
