@@ -1,0 +1,30 @@
+import java.io.*;
+public class Solution {
+
+   public static void main(String[] args) throws Exception {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+
+        int a = Integer.parseInt(bf.readLine());
+        int b = Integer.parseInt(bf.readLine());
+        int c = Integer.parseInt(bf.readLine());
+        int Mass[] ={a,b,c};
+        int countminus=0;
+        int countplus=0;
+        for(int x: Mass){
+            if(x>0) {
+                countplus++;
+            }
+            else if(x==0){
+                continue;
+            }
+            else{
+                countminus++;
+            }
+
+        }
+
+        System.out.println("количество отрицательных чисел: "+ countminus);
+        System.out.println("количество положительных чисел: "+ countplus);
+
+    }
+}
