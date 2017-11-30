@@ -27,4 +27,8 @@ public class Solution {
     public static void main(String[] args) {
         System.out.println(lines);
     }
+    public class Statics {
+    public static String FILE_NAME = "c://xx.txt";
+}
+
 }
