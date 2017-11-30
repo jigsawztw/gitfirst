@@ -1,0 +1,53 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Collections;
+/* 
+Нам повторы не нужны
+*/
+
+public class Solution {
+    public static HashMap<String, String> createMap() {
+        HashMap<String, String> map = new HashMap<>();
+        map.put("Stallone", "Лисин");
+        map.put("Stallone1", "AUGUST 2 1980");
+        map.put("Stallone2", "Лисин");
+        map.put("Stallone3", "JULY 1 1980");
+        map.put("Stallone4", "JANUARY 1 1980");
+        map.put("Stallone5", "Лисин");
+        map.put("Stallone6", "Лисин");
+        map.put("Stallone7", "SEPTEMBER 1 1980");
+        map.put("Stallone8", "Лисин");
+        map.put("Stallone9", "JULY 1 1980");
+        return map;
+    }
+            public static void removeTheFirstNameDuplicates(HashMap<String, String> map) {
+                int count = 0;
+                List<String> listValue = new ArrayList<>(map.values());
+                Iterator<String> iterator = listValue.iterator();
+                while (iterator.hasNext())
+                {
+                    String val = iterator.next();
+                    count = Collections.frequency(listValue, val);
+                    if (count > 1)
+                    {
+                        removeItemFromMapByValue(map,val);
+                        iterator.remove();
+
+
+            }}}
+
+            public static void removeItemFromMapByValue(HashMap<String, String> map, String value) {
+                HashMap<String, String> copy = new HashMap<String, String>(map);
+                for (Map.Entry<String, String> pair : copy.entrySet()) {
+                    if (pair.getValue().equals(value))
+                        map.remove(pair.getKey());
+                }
+            }
+
+            public static void main(String[] args) {
+
+            }
+        }
