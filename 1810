@@ -1,0 +1,25 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class Solution {
+    public static void main(String[] args) throws  DownloadException,IOException {
+
+
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+       
+        while(true){
+            FileInputStream input = new FileInputStream(bf.readLine());
+               if(input.available()<1000){
+                    bf.close();
+                    input.close();
+                    throw new DownloadException();
+                }
+    }
+        }
+
+
+    public static class DownloadException extends Exception {
+    }
+}
