@@ -1,0 +1,36 @@
+/* 
+Перегрузка конструкторов
+*/
+
+public class Solution {
+    public  Solution() {
+    }
+    private Solution(Object x){
+
+    }
+    protected  Solution(String f){
+
+    }
+    Solution(int i){
+
+    }
+    public class SubSolution extends Solution{
+    public SubSolution() {
+    }
+
+    protected SubSolution(String f) {
+        super(f);
+    }
+
+     SubSolution(int i) {
+        super(i);
+    }
+
+}
+
+
+
+    public static void main(String[] args) {
+
+    }
+}
