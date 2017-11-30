@@ -1,0 +1,49 @@
+import com.javarush.task.task16.task1631.common.ImageReader;
+import com.javarush.task.task16.task1631.common.ImageTypes;
+import com.javarush.task.task16.task1631.common.PngReader;
+import com.javarush.task.task16.task1631.common.JpgReader;
+import com.javarush.task.task16.task1631.common.BmpReader;
+
+public class Solution {
+ 
+    public static void main(String[] args) {
+        ImageReader reader = ImageReaderFactory.getImageReader(ImageTypes.JPG);
+    }
+    
+    
+    public class BmpReader implements ImageReader {
+}
+public interface ImageReader {
+}
+
+public enum ImageTypes {
+    BMP,
+    JPG,
+    PNG
+}
+
+public class JpgReader implements ImageReader {
+}
+
+
+public class PngReader implements ImageReader {
+}
+
+public  class ImageReaderFactory implements ImageReader{
+    public static ImageReader  getImageReader(ImageTypes x){
+
+                    if(x==ImageTypes.BMP){
+                        return new BmpReader();
+                    }
+                    else if(x==ImageTypes.JPG){
+                        return new JpgReader();
+                    }
+                    else if (x==ImageTypes.PNG)
+                        return new PngReader();
+                    else{
+                        throw new IllegalArgumentException("Неизвестный тип картинки");
+                    }
+                }
+
+        }
+}
