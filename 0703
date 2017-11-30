@@ -1,0 +1,25 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+/* 
+Общение одиноких массивов
+*/
+
+
+public class Solution {
+    public static void main(String[] args) throws Exception {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        int []x = new int[10];
+        String []y = new String[10];
+        for(int i=0;i<10;i++){
+            y[i]= bf.readLine();
+        }
+        for(int i=0;i<10;i++){
+           String f = y[i];
+           x[i]= f.length();
+        }
+        for(Integer h:x){
+            System.out.println(h);
+        }
+    }
+}
