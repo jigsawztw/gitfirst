@@ -1,0 +1,55 @@
+/* 
+Том, Джерри и Спайк
+*/
+
+public class Solution {
+    public static void main(String[] args) {
+
+    }
+    //может двигаться
+    public interface Movable {
+        void move();
+    }
+
+    //может быть съеден
+    public interface Eatable {
+        void eaten();
+    }
+
+    //может кого-нибудь съесть
+    public interface Eat {
+        void eat();
+    }
+    public static class Cat implements Eat,Eatable,Movable{
+        public void eaten(){
+            System.out.println("Съели кота");
+        }
+        public void eat(){
+            System.out.println("Вкуснятина!");
+        }
+        public void move(){
+            System.out.println("Бежим!");
+        }
+
+
+    }
+    public static class Dog implements Eat,Movable{
+
+        public void eat(){
+            System.out.println("Вкуснятина!");
+        }
+        public void move(){
+            System.out.println("Бежим!");
+        }
+
+    }
+    public static class Mouse implements  Eatable,Movable{
+        public void move(){
+            System.out.println("Бежим!");
+        }
+        public void eaten(){
+            System.out.println("Съели кота");
+        }
+
+    }
+}
