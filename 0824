@@ -1,0 +1,66 @@
+import java.util.ArrayList;
+/* 
+Собираем семейство
+*/
+
+public class Solution {
+    public static void main(String[] args) {
+
+        Human pizduk1 =new Human("pizduk1",true,24);
+        Human pizduk2 =new Human("pizduk2",false,22);
+        Human pizduk3 =new Human("pizduk3",true,20);
+        Human batya= new Human("Viktor",true,48);
+        batya.children.add(pizduk2);
+        batya.children.add(pizduk3);
+        batya.children.add(pizduk1);
+        Human mama= new Human("Sveta",false,47);
+        mama.children.add(pizduk2);
+        mama.children.add(pizduk3);
+        mama.children.add(pizduk1);
+        Human ded1= new Human("ded maksim",true,67);
+        Human ded2= new Human("ded serega",true,65);
+        Human babka1= new Human("babka luda",false,63);
+        Human babka2= new Human("babka irina",false,61);
+        ded1.children.add(batya);
+        babka1.children.add(batya);
+        ded2.children.add(mama);
+        babka2.children.add(mama);
+
+        System.out.println(pizduk1.toString()+"\n"+pizduk2.toString()+"\n"+pizduk3.toString()+"\n"+
+                ded1.toString()+"\n"+ded2.toString()+"\n"+babka1.toString()+"\n"+babka2.toString()+"\n"+batya.toString()+"\n"+mama.toString());
+    }
+
+    public static class Human {
+        private String name;
+        private boolean sex;
+        private int age;
+        ArrayList<Human>children = new ArrayList<>();
+
+        public Human(String name, boolean sex, int age){
+            this.age=age;
+            this.name= name;
+            this.sex=sex;
+
+        }
+
+
+        public String toString() {
+            String text = "";
+            text += "Имя: " + this.name;
+            text += ", пол: " + (this.sex ? "мужской" : "женский");
+            text += ", возраст: " + this.age;
+
+            int childCount = this.children.size();
+            if (childCount > 0) {
+                text += ", дети: " + this.children.get(0).name;
+
+                for (int i = 1; i < childCount; i++) {
+                    Human child = this.children.get(i);
+                    text += ", " + child.name;
+                }
+            }
+            return text;
+        }
+    }
+
+}
