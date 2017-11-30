@@ -1,0 +1,44 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+/* 
+НОД
+*/
+
+public class Solution {
+    public static void main(String[] args) throws Exception {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        int a,b,delitel;
+        try{
+           a = Integer.parseInt(bf.readLine());
+           b = Integer.parseInt(bf.readLine());
+
+        }
+        catch (NumberFormatException e){
+            throw  new NumberFormatException("не тот формат");
+        }
+
+        if(a==0||b==0||a<0||b<0){
+            throw new NumberFormatException("число равно нулю или отрицательное");
+        }
+        delitel=1;
+        if(a<=b){
+            for(int i=1;i<=a;i++){
+                if(a%i==0&&b%i==0){
+                    delitel=i;
+                }
+            }
+        }
+        else if(b<a){
+            for(int i=1;i<b;i++){
+                if(b%i==0&&a%i==0){
+                    delitel=i;
+                }
+            }
+        }
+        System.out.println(delitel);
+
+
+
+
+    }
+}
