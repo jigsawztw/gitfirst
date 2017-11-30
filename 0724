@@ -1,0 +1,58 @@
+
+/* 
+Семейная перепись
+*/
+
+public class Solution {
+    public static void main(String[] args) {
+        Human ded1 = new Human("Виктор", true, 65);
+        Human ded2 = new Human("Алексей", true, 68);
+        Human babushka1 = new Human("Алена", false, 55);
+        Human babushka2 = new Human("Света", false, 58);
+        Human batya = new Human("Владимир", true, 39,ded1,babushka1);
+        Human mama = new Human("Катерина", false, 33,ded2,babushka2);
+        Human sin = new Human("Алексей мл", true, 19,batya,mama);
+        Human doch1 = new Human("Елена", false, 15,batya,mama);
+        Human doch2 = new Human("Вика", false, 11,batya,mama);
+
+        System.out.println(ded1.toString()+"\n"+ ded2.toString()+"\n"+babushka1.toString()+"\n"+babushka2.toString()+"\n"+
+                batya.toString()+"\n"+mama.toString()+"\n"+sin.toString()+"\n"+doch1.toString()+"\n"+doch2.toString()+"\n");
+    }
+
+    public static class Human {
+        private String name;
+        private boolean sex;
+        private int age;
+        private Human father;
+        private Human mother;
+
+        public Human(String name, boolean sex, int age){
+            this.name = name;
+            this.sex = sex;
+            this.age = age;
+        }
+        public Human(String name, boolean sex, int age,Human father,Human mother){
+            this.name = name;
+            this.sex = sex;
+            this.age = age;
+            this.father = father;
+            this.mother = mother;
+        }
+
+
+        public String toString() {
+            String text = "";
+            text += "Имя: " + this.name;
+            text += ", пол: " + (this.sex ? "мужской" : "женский");
+            text += ", возраст: " + this.age;
+
+            if (this.father != null)
+                text += ", отец: " + this.father.name;
+
+            if (this.mother != null)
+                text += ", мать: " + this.mother.name;
+
+            return text;
+        }
+    }
+}
