@@ -1,0 +1,119 @@
+import java.util.ArrayList;
+import java.util.List;
+
+/* 
+Нашествие исключений
+*/
+
+public class Solution {
+    public static int x;
+    public static List<Exception> exceptions = new ArrayList<Exception>();
+    public static String s=null;
+    public static void main(String[] args) {
+        initExceptions();
+        initExceptions1();
+        initExceptions2();
+        initExceptions3();
+        initExceptions4();
+        initExceptions5();
+        initExceptions6();
+        initExceptions7();
+        initExceptions8();
+        initExceptions9();
+
+        for (Exception exception : exceptions) {
+            System.out.println(exception);
+        }
+    }
+
+    private static void initExceptions() {   //it's first exception
+        try {
+            float i = 1 / 0;
+
+        } catch (Exception e) {
+            exceptions.add(e);
+        }}
+    private static void initExceptions1() {   //it's first exception
+        try {
+            if(x!=5) {
+                throw new IllegalArgumentException();
+            }}
+            catch( IllegalArgumentException e){
+                exceptions.add(e);
+            }
+        }
+    private static void initExceptions2() {   //it's first exception
+        try {
+            if(x!=5) {
+                throw new IllegalMonitorStateException();
+            }}
+        catch(IllegalMonitorStateException e){
+            exceptions.add(e);
+        }
+    }
+    private static void initExceptions3() {   //it's first exception
+        try {
+            if(x!=5) {
+                throw new  NullPointerException();
+            }}
+        catch( NullPointerException e){
+            exceptions.add(e);
+        }
+    }
+    private static void initExceptions4() {   //it's first exception
+        try {
+            if(x!=5) {
+                throw new    NegativeArraySizeException();
+            }}
+        catch(  NegativeArraySizeException e){
+            exceptions.add(e);
+        }
+    }
+    private static void initExceptions5() {   //it's first exception
+        try {
+            if(x!=5) {
+                throw new ArrayStoreException();
+            }}
+        catch(ArrayStoreException e){
+            exceptions.add(e);
+        }
+    }
+    private static void initExceptions6() {   //it's first exception
+        try {
+            if(x!=5) {
+                throw new IllegalStateException();
+            }}
+        catch(IllegalStateException e){
+            exceptions.add(e);
+        }
+    }
+    private static void initExceptions7() {   //it's first exception
+        try {
+            if(x!=5) {
+                throw new ClassCastException();
+            }}
+        catch(ClassCastException e){
+            exceptions.add(e);
+        }
+    }
+    private static void initExceptions8() {   //it's first exception
+        try {
+            if(x!=5) {
+                throw new    NegativeArraySizeException();
+            }}
+        catch( NegativeArraySizeException e){
+            exceptions.add(e);
+        }
+    }
+    private static void initExceptions9() {   //it's first exception
+        try {
+            if(x!=2) {
+                throw new IndexOutOfBoundsException();
+            }}
+        catch(IndexOutOfBoundsException e){
+            exceptions.add(e);
+        }
+    }
+
+
+}
