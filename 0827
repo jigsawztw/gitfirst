@@ -1,0 +1,28 @@
+import java.util.Date;
+
+/* 
+Работа с датой
+*/
+
+public class Solution {
+    public static void main(String[] args) {
+        System.out.println(isDateOdd("MAY 13 2013"));
+
+    }
+
+    public static boolean isDateOdd(String date) {
+        Date x = new Date(date);
+        Date y = new Date(date);
+        y.setMonth(0);
+        y.setDate(1);
+        long ms = x.getTime()-y.getTime();
+
+        if((ms/(1000*24*3600))%2==0){
+            System.out.print(date+ " - ");
+            return true;
+        }
+        System.out.print(date+ " - ");
+        return false;
+
+    }
+}
