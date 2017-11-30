@@ -1,0 +1,70 @@
+/* 
+Куриная фабрика
+*/
+
+public class Solution {
+    public static void main(String[] args) {
+        Hen hen = HenFactory.getHen(Country.BELARUS);
+        hen.getCountOfEggsPerMonth();
+        System.out.println(hen.getCountOfEggsPerMonth());
+        System.out.println(hen.getDescription());
+    }
+    static class HenFactory {
+
+    static Hen getHen(String country) {
+        Hen hen = null;
+        if (country.equals(Country.BELARUS)) hen = new BelarusianHen();
+        else if (country.equals(Country.MOLDOVA)) hen = new MoldovanHen();
+        else if (country.equals(Country.RUSSIA)) hen = new RussianHen();
+        else if (country.equals(Country.UKRAINE)) hen = new UkrainianHen();
+
+        return hen;
+    }}
+    
+    
+public interface Country {
+    String UKRAINE = "Ukraine";
+    String RUSSIA = "Russia";
+    String MOLDOVA = "Moldova";
+    String BELARUS = "Belarus";
+}
+
+ abstract class Hen{
+        abstract int getCountOfEggsPerMonth();
+        String getDescription(){
+            return  "Я - курица.";
+        }
+    }
+    
+     class MoldovanHen extends Hen {
+
+     int getCountOfEggsPerMonth(){
+         return 11;
+     }
+     String getDescription(){
+         return super.getDescription() +  " Моя страна - " + Country.MOLDOVA + ". Я несу " + getCountOfEggsPerMonth() + " яиц в месяц.";
+     }
+ }
+ 
+ class RussianHen extends Hen  {
+
+    int getCountOfEggsPerMonth(){
+        return 17;
+    }
+    String getDescription(){
+        return super.getDescription() +  " Моя страна - " + Country.RUSSIA + ". Я несу " + getCountOfEggsPerMonth() + " яиц в месяц.";
+    }
+}
+
+ class UkrainianHen extends Hen{
+
+    int getCountOfEggsPerMonth(){
+        return 12;
+    }
+    String getDescription(){
+return super.getDescription() +  " Моя страна - " + Country.UKRAINE + ". Я несу " + getCountOfEggsPerMonth() + " яиц в месяц.";
+        
+    }
+}
+
+}
