@@ -1,0 +1,22 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
+/* 
+Что за список такой?
+*/
+
+public class Solution {
+    public static void main(String[] args) throws Exception {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        ArrayList<String> x = new ArrayList();
+        for(int i=0;i<5;i++){
+            x.add("x"+i);
+        }
+        System.out.println(x.size());
+        for(String f:x){
+            System.out.println(f);
+        }
+
+    }
+}
