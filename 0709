@@ -1,0 +1,33 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
+/* 
+Выражаемся покороче
+*/
+
+public class Solution {
+
+    public static void main(String[] args) throws Exception {
+        ArrayList<String> y = new ArrayList<>();
+        ArrayList<String> x = new ArrayList<>();
+        for(int i=0;i<5;i++){
+            BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+            x.add(bf.readLine());
+        }
+        int min = x.get(0).length();
+        for(int i=0;i<4;i++){
+            if(min>x.get(i+1).length()){
+                min = x.get(i+1).length();
+            }
+        }
+        for(int i=0;i<5;i++){
+            if(x.get(i).length()==min){
+                y.add(x.get(i));
+            }
+        }
+        for(String h:y){
+            System.out.println(h);
+        }
+    }
+}
