@@ -1,0 +1,28 @@
+/* 
+Мосты
+*/
+
+public class Solution {
+    public static void main(String[] args) {
+        println(new WaterBridge());
+        println(new SuspensionBridge());
+    }
+ public static void println(Bridge bridge){
+        System.out.println( bridge.getCarsCount());
+    }
+    
+    public interface Bridge {
+    int getCarsCount();
+}
+public class SuspensionBridge implements Bridge{
+    public int getCarsCount(){
+        return 19;
+    }
+}
+public class WaterBridge implements Bridge{
+  public int getCarsCount(){
+       return 14;
+   }
+}
+
+}
