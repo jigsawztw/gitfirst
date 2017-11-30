@@ -1,0 +1,23 @@
+import java.io.FileInputStream;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+/* 
+Минимальный байт
+*/
+
+public class Solution {
+    public static void main(String[] args) throws Exception {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        FileInputStream input = new FileInputStream(bf.readLine());
+        bf.close();
+        int min = input.read();
+        while(input.available()>0){
+            int data = input.read();
+            if(min>data){
+                min = data;
+            }
+        }
+        System.out.println(min);
+        input.close();
+    }
+}
