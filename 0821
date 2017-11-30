@@ -1,0 +1,35 @@
+import java.util.HashMap;
+import java.util.Map;
+
+/* 
+Однофамильцы и тёзки
+*/
+
+public class Solution {
+    public static void main(String[] args) {
+        Map<String, String> map = createPeopleList();
+        printPeopleList(map);
+    }
+
+    public static Map<String, String> createPeopleList() {
+        HashMap<String,String>x = new HashMap<>() ;
+        x.put("Zalupin", "Sergey");
+        x.put("Guslin", "Sergey");
+        x.put("Zalupin", "Misha");
+        x.put("Imeev", "Sergey");
+        x.put("Zalupin", "Misha");
+        x.put("Zalupin", "Sergey");
+        x.put("Vicherin", "Sergey");
+        x.put("Zalupin", "Viktor");
+        x.put("Zalupin", "Sergey");
+        x.put("Kashin", "Ludovik");
+
+        return x;
+    }
+
+    public static void printPeopleList(Map<String, String> map) {
+        for (Map.Entry<String, String> s : map.entrySet()) {
+            System.out.println(s.getKey() + " " + s.getValue());
+        }
+    }
+}
