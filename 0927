@@ -1,0 +1,63 @@
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+/* 
+Десять котов
+*/
+
+public class Solution {
+    public static void main(String[] args) {
+        Map<String, Cat> map = createMap();
+        Set<Cat> set = convertMapToSet(map);
+        printCatSet(set);
+    }
+
+    public static Map<String, Cat> createMap() {
+        HashMap<String,Cat> cat = new HashMap<>();
+        cat.put("Vaska",new Cat("Vaska"));
+        cat.put("bublik",new Cat("bublik"));
+        cat.put("petr",new Cat("petr"));
+        cat.put("vitya",new Cat("vitya"));
+        cat.put("buba",new Cat("buba"));
+        cat.put("mashka",new Cat("mashka"));
+        cat.put("leshka",new Cat("leshka"));
+        cat.put("kisa",new Cat("kisa"));
+        cat.put("kisec",new Cat("kisec"));
+        cat.put("glumik",new Cat("glumik"));
+        return cat;
+    }
+
+    public static Set<Cat> convertMapToSet(Map<String, Cat> map) {
+        Set<Cat>x = new HashSet<Cat>(); 
+        
+        for (Map.Entry<String, Cat> pair : map.entrySet())
+        {
+            Cat kot = pair.getValue();              
+            x.add(kot);
+        }
+    return x;
+
+    }
+
+    public static void printCatSet(Set<Cat> set) {
+        for (Cat cat : set) {
+            System.out.println(cat);
+        }
+    }
+
+    public static class Cat {
+        private String name;
+
+        public Cat(String name) {
+            this.name = name;
+        }
+
+        public String toString() {
+            return "Cat " + this.name;
+        }
+    }
+
+
+}
