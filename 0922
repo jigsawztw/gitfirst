@@ -1,0 +1,23 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+/* 
+Какое сегодня число?
+*/
+
+
+
+
+public class Solution {
+
+    public static void main(String[] args) throws Exception {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        SimpleDateFormat x = new SimpleDateFormat("MMM dd, YYYY",Locale.ENGLISH);
+        String s = bf.readLine();
+        Date a = new Date(s);
+        System.out.println(x.format(a).toUpperCase());
+    }
+}
