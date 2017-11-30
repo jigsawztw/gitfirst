@@ -1,0 +1,38 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        HashMap<Integer,String > x = new HashMap<>();
+        x.put(1,"January");
+        x.put(2,"February");
+        x.put(3,"March");
+        x.put(4,"April");
+        x.put(5,"May");
+        x.put(6,"June");
+        x.put(7,"July");
+        x.put(8,"August");
+        x.put(9,"September");
+        x.put(10,"October");
+        x.put(11,"November");
+        x.put(12,"December");
+
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        String a = bf.readLine();
+        for (Map.Entry<Integer, String> pair : x.entrySet())
+        {
+            Integer key = pair.getKey();                      //ключ
+            String value = pair.getValue();
+            if(value.equalsIgnoreCase(a)){
+                System.out.println(value + " is " + key+" month");
+            }
+
+        }
+    }}
