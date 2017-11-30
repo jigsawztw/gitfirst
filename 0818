@@ -1,0 +1,39 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Iterator;
+/* 
+Только для богачей
+*/
+
+public class Solution {
+    public static HashMap<String, Integer> createMap() {
+        HashMap<String,Integer> x = new HashMap<>();
+        x.put("Жопкин", 440);
+        x.put("Лисин", 899);
+        x.put("Писин", 600);
+        x.put("Гисин", 330);
+        x.put("Русик", 324);
+        x.put("Восин", 560);
+        x.put("Боси", 502);
+        x.put("Коси", 689);
+        x.put("Ап", 445);
+        x.put("Фап", 560);
+        return x;
+    }
+
+    public static void removeItemFromMap(HashMap<String, Integer> map) {
+        Iterator<Map.Entry<String,Integer>> it = map.entrySet().iterator();
+        while(it.hasNext()){
+            Map.Entry<String,Integer> f = it.next();
+            if(f.getValue()<500){
+                it.remove();
+            }
+
+        }
+    }
+
+    public static void main(String[] args) {
+
+
+    }
+}
