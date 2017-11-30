@@ -1,0 +1,25 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.Scanner;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+/* 
+Чтение файла
+*/
+
+public class Solution {
+    public static void main(String[] args) throws IOException{
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String x = reader.readLine();
+        InputStream input = new FileInputStream(x);
+        while(input.available()>0){
+            int c = input.read();
+            System.out.print((char)c);
+        }
+
+
+        input.close();
+        reader.close();
+    }
+}
