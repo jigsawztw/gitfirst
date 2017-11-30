@@ -1,0 +1,52 @@
+import java.io.*;
+import java.io.IOException;
+
+
+/* 
+Расширяем AmigoOutputStream
+*/
+
+public interface AmigoOutputStream {
+    void flush() throws IOException;
+
+    void write(int b) throws IOException;
+
+    void write(byte[] b) throws IOException;
+
+    void write(byte[] b, int off, int len) throws IOException;
+
+    void close() throws IOException;
+}
+
+
+public class QuestionFileOutputStream implements AmigoOutputStream {
+       AmigoOutputStream amigoOutputStream;
+
+    QuestionFileOutputStream(AmigoOutputStream amigoOutputStream) {
+        this.amigoOutputStream = amigoOutputStream;
+    }
+       
+       public void close() throws IOException{
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Вы действительно хотите закрыть поток? Д/Н");
+        if(bf.readLine().equals("Д")){
+            amigoOutputStream.close();
+        }
+
+    }
+    public void flush() throws IOException{
+        amigoOutputStream.flush();
+    }
+
+    public void write(int b) throws IOException{
+        amigoOutputStream.write( b);
+    }
+
+    public void write(byte[] b) throws IOException{
+        amigoOutputStream.write(b);
+    }
+
+    public void write(byte[] b, int off, int len) throws IOException{
+        amigoOutputStream.write(b,  off,  len);
+    }
+}
