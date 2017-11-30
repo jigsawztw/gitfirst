@@ -1,0 +1,39 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Scanner;
+import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.File;
+import java.io.FileInputStream;
+
+public class Solution {
+    public static void main(String[] args) throws  IOException{
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        Scanner sc = new Scanner(new FileInputStream(bf.readLine()));
+        ArrayList<Integer> list = new ArrayList<>();
+        
+        while(sc.hasNext()){
+            list.add(Integer.parseInt(sc.next()));
+        }
+        sc.close();
+        for(int i=list.size()-1;i>0;i--){
+            for(int j=0;j<i;j++){
+                    if(list.get(j)> list.get(j+1)){
+                        int temp = list.get(j);
+                        list.set(j,list.get(j+1));
+                        list.set(j+1,temp);
+                    }
+                }
+        }
+        for(int i=0;i<list.size();i++){
+            if(list.get(i)%2!=0){
+                list.remove(i);
+                i--;
+            }
+        }
+        for(Integer f:list){
+            System.out.println(f);
+        }
+}}
