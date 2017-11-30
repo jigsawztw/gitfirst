@@ -1,0 +1,20 @@
+
+import java.io.*;
+
+public class Solution {
+    
+        public static void main(String[] args) throws Exception {
+                BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+                float a = Float.parseFloat(bf.readLine());
+                if(a%10<3||a%10>=5&&a%10<8){
+                    System.out.println("зелёный");
+                }
+                else if(a%10>=3&&a%10<4||a%10>=8&&a%10<9){
+                    System.out.println("желтый");
+                }
+                else if(a%10>=4&&a%10<5||a%10>=9){
+                    System.out.println("красный");
+                }
+
+            }
+        }
