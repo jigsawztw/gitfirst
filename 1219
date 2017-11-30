@@ -1,0 +1,63 @@
+/* 
+Создаем человека
+*/
+
+public class Solution {
+    public static void main(String[] args) {
+
+    }
+
+    public interface Fly {
+        public void fly();
+    }
+
+    public interface Run {
+        public void run();
+    }
+
+    public interface Swim {
+        public void swim();
+    }
+
+
+    public class Human implements  Run,Swim{
+        public void swim(){
+            System.out.println("Плывем");
+        }
+        public void run(){
+            System.out.println("Бежим");}
+    }
+
+    public class Duck implements Run,Swim,Fly {
+        public void swim() {
+            System.out.println("Плывем");
+        }
+
+        public void run() {
+            System.out.println("Бежим");
+        }
+        public void fly() {
+            System.out.println("Летим");
+        }
+    }
+    
+
+    public class Penguin implements Run,Swim {
+        public void swim() {
+            System.out.println("Плывем");
+        }
+
+        public void run() {
+            System.out.println("Бежим");
+        }
+    }
+
+    public class Airplane implements Fly,Run{
+        public void fly() {
+            System.out.println("Летим");
+        }
+        public void run() {
+            System.out.println("Едем");
+        }
+    }
+}
