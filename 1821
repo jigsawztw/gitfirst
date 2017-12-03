@@ -1,0 +1,35 @@
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        ArrayList<Character> charlist = new ArrayList<>();
+        String file = args[0];
+        FileInputStream input = new FileInputStream(file);
+        while (input.available() > 0) {
+            charlist.add((char) input.read());
+        }
+        input.close();
+        TreeMap<Character, Integer> map = new TreeMap<>();
+        map.put(charlist.get(0), 1);
+
+        for (int i = 1; i < charlist.size(); i++) {
+            Iterator<Map.Entry<Character, Integer>> iterator = map.entrySet().iterator();
+            while (iterator.hasNext()) {
+                Map.Entry<Character, Integer> pair = iterator.next();
+                if (pair.getKey().equals(charlist.get(i))) {
+                    map.put(charlist.get(i), pair.getValue() + 1);
+                } else if (!(pair.getKey().equals(charlist.get(i))) && !map.containsKey(charlist.get(i))) {
+                    map.put(charlist.get(i), 1);
+                    break;
+                } else {
+                    continue;
+                }
+            }
+        }
+
+        Iterator<Map.Entry<Character, Integer>> iterator = map.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<Character, Integer> pair = iterator.next();
+            System.out.println(pair.getKey() + " " + pair.getValue());
+
+        }
+    }
+}
