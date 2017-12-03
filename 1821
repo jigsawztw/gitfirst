@@ -25,11 +25,8 @@ public class Solution {
             }
         }
 
-        Iterator<Map.Entry<Character, Integer>> iterator = map.entrySet().iterator();
-        while (iterator.hasNext()) {
-            Map.Entry<Character, Integer> pair = iterator.next();
-            System.out.println(pair.getKey() + " " + pair.getValue());
-
+       for (Map.Entry<Character, Integer> entry : map.entrySet()) {
+            System.out.println(entry.getKey() + " " + entry.getValue());
+        }
         }
     }
-}
