@@ -1,0 +1,27 @@
+public class Solution {
+    public static void main(String[] args) throws IOException{
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+
+        String x= bf.readLine();
+        bf.close();
+        int y = 1+(int)Math.random()*255;
+        FileInputStream input = new FileInputStream(x.substring(3,x.lastIndexOf(' ')));
+        FileOutputStream out = new FileOutputStream(x.substring(x.lastIndexOf(' ')+1));
+        if(x.charAt(1)=='e'){
+            while(input.available()>0){
+                int data = input.read();
+                out.write(data+y);
+            }
+        }
+        else if(x.charAt(1)=='d'){
+            while(input.available()>0){
+                int data = input.read();
+                out.write(data-y);
+            }
+
+        }
+        input.close();
+        out.close();
+    }
+
+}
