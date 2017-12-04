@@ -1,0 +1,53 @@
+public class Solution {
+    public static Map<String, Integer> resultMap = new HashMap<String, Integer>();
+    public static String file;
+    public static int max=1;
+    public static int maxbyte;
+    public static void main(String[] args) throws IOException{
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        file = bf.readLine();
+        while(!file.equals("exit")){
+            new ReadThread(file).start();
+            file = bf.readLine();
+        }
+        bf.close();
+    }
+
+    public static class ReadThread extends Thread {
+        public ReadThread(String fileName) {
+            file = fileName;
+        }
+        public void run() {
+
+            try{
+
+                FileInputStream x = new FileInputStream(file);
+                byte[] buffer = new byte[x.available()];
+                while(x.available()>0){
+                    x.read(buffer);
+                }
+                x.close();
+
+                for(int j = 0;j<buffer.length;j++){
+                    int maximum=0;
+                    for(int i=0;i<buffer.length;i++){
+                        if(buffer[j]==buffer[i]){
+                            maximum++;
+                            if(max<maximum){
+                                    max = maximum;
+                                    maxbyte= buffer[i];
+                            }
+                        }
+
+                    }
+                }
+                resultMap.put(file,maxbyte);
+            }
+
+            catch (Exception e){
+                e.printStackTrace();
+            }
+
+        }
+    }
+}
