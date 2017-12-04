@@ -1,0 +1,25 @@
+public class Solution {
+    public static String file;
+    public static void main(String[] args) throws IOException{
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        try {
+            while(true){
+                file = bf.readLine();
+                FileInputStream x = new FileInputStream(new File(file));
+                if(x.read()!=0){
+                    x.close();
+                    continue;
+                }
+                else{
+                    throw new FileNotFoundException();
+                    
+                }
+            }
+
+        }
+        catch (FileNotFoundException e){
+            System.out.println(Solution.file);
+        }
+     bf.close();   
+    }
+}
