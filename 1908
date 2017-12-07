@@ -1,0 +1,19 @@
+public class Solution {
+    public static void main(String[] args) throws IOException{
+        BufferedReader bf =new BufferedReader(new InputStreamReader(System.in));
+       BufferedReader reader = new BufferedReader(new FileReader(bf.readLine()));
+       BufferedWriter writer = new BufferedWriter(new FileWriter(bf.readLine()));
+        bf.close();
+        while(reader.ready()){
+            char data = (char) reader.read();
+            if(Character.isDigit(data)){
+                writer.write(data);
+                writer.write(32);
+            }
+
+        }
+        reader.close();
+        writer.close();
+
+    }
+}
