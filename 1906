@@ -1,0 +1,24 @@
+public class Solution {
+    public static void main(String[] args) throws IOException{
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        FileReader input = new FileReader(bf.readLine());
+        FileWriter output = new FileWriter(bf.readLine());
+        bf.close();
+        int chislo=1;
+       while(input.ready()){
+           if(chislo%2==0){
+               int data = input.read();
+               output.write(data);
+               chislo++;
+           }
+           else{
+               input.read();
+               chislo++;
+           }
+           
+       }
+        input.close();
+        output.close();
+
+    }
+}
