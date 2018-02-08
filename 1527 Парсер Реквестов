@@ -10,6 +10,7 @@ public class Solution {
     public static void main(String[] args) throws IOException{
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         String x = bf.readLine();
+        bf.close();
         ArrayList<String> list = new ArrayList<>();
         ArrayList<Double> objdoubles = new ArrayList<>();
         ArrayList<String> objstr = new ArrayList<>();
