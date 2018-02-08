@@ -1,0 +1,63 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+/*
+Парсер реквестов
+*/
+
+public class Solution {
+    public static void main(String[] args) throws IOException{
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        String x = bf.readLine();
+        ArrayList<String> list = new ArrayList<>();
+        ArrayList<Double> objdoubles = new ArrayList<>();
+        ArrayList<String> objstr = new ArrayList<>();
+        x = x.substring(x.indexOf("?")+1);
+        for(int i=0;i<x.length();i++){
+            if(x.charAt(i)=='&' || i == x.length()-1){
+                    for(int j=0;j<i;j++){
+                        if(x.charAt(j)=='=' && !x.substring(0,j).equals("obj")){
+                            list.add(x.substring(0,j));
+                        }
+                        else if(x.charAt(j)=='=' && x.substring(0,j).equals("obj")){
+                            list.add(x.substring(0,j));
+                            try{
+                                objdoubles.add(Double.parseDouble(x.substring(j+1,i)));
+                            }
+                            catch (Exception e){
+                                objstr.add(x.substring(j+1,i));
+                            }
+                        }
+                    }
+                    if(!x.substring(0,i).contains("=")){
+                    list.add(x.substring(0,i));
+                }
+                x= x.substring(i+1);
+                i=1;
+                continue;
+                    }
+                }
+                for(String l: list){
+                    System.out.print(l+" ");
+                }
+        System.out.println();
+        if(!objdoubles.isEmpty()){
+            for(Double f: objdoubles){
+                alert(f);
+            }
+        }
+        if(!objstr.isEmpty()){
+            for(String f: objstr){
+                alert(f);
+            }
+        }
+            }
+    public static void alert(double value) {
+        System.out.println("double " + value);
+    }
+
+    public static void alert(String value) {
+        System.out.println("String " + value);
+    }
+}
