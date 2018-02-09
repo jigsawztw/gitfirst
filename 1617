@@ -3,7 +3,7 @@
 */
 
 public class Solution {
-    public static volatile int countSeconds = 4;
+    public static volatile int countSeconds = 3;
 
     public static void main(String[] args) throws InterruptedException {
         RacingClock clock = new RacingClock();
@@ -14,33 +14,26 @@ public class Solution {
     public static class RacingClock extends Thread {
         public RacingClock() {
             start();
+
         }
 
         public void run() {
-            if(countSeconds==3){
-                while(countSeconds>0) {
+            while(countSeconds>0){
                     try {
+                        System.out.print(countSeconds + " ");
                         Thread.sleep(1000);
-                        System.out.println(countSeconds);
-                        countSeconds--;
+                        if(countSeconds==1) {
+                            System.out.print("Марш!");
+                        }
                     } catch (InterruptedException e) {
-
+                        System.out.print("Прервано!");
                     }
-                }
-                System.out.println("Марш!");
+                    countSeconds--;
             }
-            else{
-                while(countSeconds>0) {
-                    try {
-                        Thread.sleep(1000);
-                        System.out.println(countSeconds);
-                        countSeconds--;
-                    } catch (InterruptedException e) {
 
-                    }
-                }
-                System.out.println("Прервано!");
-            }
-        }
+
+
+          }
+
     }
 }
