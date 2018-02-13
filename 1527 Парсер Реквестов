@@ -60,5 +60,5 @@ public class Solution {
 
     public static void alert(String value) {
         System.out.println("String " + value);
-    } 
+    }
 }
