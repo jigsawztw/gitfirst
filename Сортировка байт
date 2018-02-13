@@ -1,0 +1,27 @@
+import java.io.*;
+import java.util.*;
+/* 
+Сортировка байт
+*/
+
+public class Solution {
+    public static void main(String[] args) throws Exception {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        FileInputStream fileInputStream = new FileInputStream(bf.readLine());
+        bf.close();
+        ArrayList<Integer> list = new ArrayList<>();
+        while(fileInputStream.available()>0){
+            int data = fileInputStream.read();
+            if(list.contains(data)){
+                continue;
+            }
+            list.add(data);
+        }
+        fileInputStream.close();
+        Collections.sort(list);
+        for(Integer l : list){
+            System.out.print(l+" ");
+        }
+
+    }
+}
