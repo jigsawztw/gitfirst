@@ -1,23 +1,7 @@
-import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.io.IOException;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
-/* 
-CRUD
-*/
-
 
 public class Solution {
     public static List<Person> allPeople = new ArrayList<Person>();
@@ -26,137 +10,57 @@ public class Solution {
         allPeople.add(Person.createMale("Иванов Иван", new Date()));  //сегодня родился    id=0
         allPeople.add(Person.createMale("Петров Петр", new Date()));  //сегодня родился    id=1
     }
-public enum Sex {
-    MALE,
-    FEMALE
-}
 
-public class Person {
-    private String name;
-    private Sex sex;
-    private Date birthDay;
+    public static void main(String[] args) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-YYYY", Locale.ENGLISH);
+       BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+       try{
+       String x = bf.readLine();
+       if(x.substring(0,2).equals("-c")){
+           String[]newstring = new String[3];
+           newstring = x.substring(3).split(" ",3);
 
-    private Person(String name, Sex sex, Date birthDay) {
-        this.name = name;
-        this.sex = sex;
-        this.birthDay = birthDay;
-    }
+          if(newstring[1].equals("ж")){
+              allPeople.add(Person.createFemale(newstring[0], new Date(newstring[2])));
+              System.out.println(allPeople.size()-1);
+          }
+          else{
+              allPeople.add(Person.createMale(newstring[0], new Date(newstring[2])));
+              System.out.println(allPeople.size()-1);
+          }
+       }
+       if(x.substring(0,2).equals("-u")){
+           String[]newstring = new String[4];
+           newstring = x.substring(3).split(" ",4);
 
-    public static Person createMale(String name, Date birthDay) {
-        return new Person(name, Sex.MALE, birthDay);
-    }
+           allPeople.get(Integer.parseInt(newstring[0])).setName((newstring[1]));
+           if(newstring[2].equals("м")){
+               allPeople.get(Integer.parseInt(newstring[0])).setSex((Sex.MALE));
+           }
+           else{
+               allPeople.get(Integer.parseInt(newstring[0])).setSex((Sex.FEMALE));
+           }
 
-    public static Person createFemale(String name, Date birthDay) {
-        return new Person(name, Sex.FEMALE, birthDay);
-    }
+          allPeople.get(Integer.parseInt(newstring[0])).setBirthDay(new Date(newstring[3]));
+       }
+       if(x.substring(0,2).equals("-d")){
+           allPeople.get(Integer.parseInt(x.substring(3))).setBirthDay(null);
+           allPeople.get(Integer.parseInt(x.substring(3))).setSex(null);
+           allPeople.get(Integer.parseInt(x.substring(3))).setName(null);
+           }
+           if(x.substring(0,2).equals("-i")){
 
-    public String getName() {
-        return name;
-    }
+               System.out.print(allPeople.get(Integer.parseInt(x.substring(3))).getName()+ " "+
+                       allPeople.get(Integer.parseInt(x.substring(3))).getSex()+" "+
+                        simpleDateFormat.format(allPeople.get(Integer.parseInt(x.substring(3))).getBirthDay()));
+           }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Sex getSex() {
-        return sex;
-    }
-
-    public void setSex(Sex sex) {
-        this.sex = sex;
-    }
-
-    public Date getBirthDay() {
-        return birthDay;
-    }
-
-    public void setBirthDay(Date birthDay) {
-        this.birthDay = birthDay;
-    }
-}
-
-
-    public static void main(String[] args) throws IOException, ParseException {
-        //start here - начни тут
-        String command = args[0];
-        String inputString = "";
-        for (int i = 1; i < args.length; i++) {
-            inputString += args[i] + " ";
-        }
-        String[] inputParam = inputString.split(" ");
-
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
-        switch (command) {
-            case "-c": {
-                String name = "";
-                int count = 0;
-                for (int i = 0; i < inputParam.length; i++) {
-                    if (!inputParam[i].equals("м") && !inputParam[i].equals("ж")) {
-                        name += inputParam[i] + " ";
-                        count++;
-                    } else break;
-                }
-                name = name.substring(0, name.length() - 1);
-
-                String sex = inputParam[count];
-                Date birthdate = simpleDateFormat.parse(inputParam[count + 1]);
-                if (sex.equals("м")) {
-                    allPeople.add(Person.createMale(name, birthdate));
-                } else if (sex.equals("ж")) {
-                    allPeople.add(Person.createFemale(name, birthdate));
-                }
-            }
-            System.out.println(allPeople.size() - 1);
-            break;
-
-            case "-u": { //-u id name sex bd
-                int id = Integer.parseInt(inputParam[0]);
-                String name = "";
-                int count = 1;
-                for (int i = 1; i < inputParam.length; i++) {
-                    if (!inputParam[i].equals("м") && !inputParam[i].equals("ж")) {
-                        name += inputParam[i] + " ";
-                        count++;
-                    } else break;
-                }
-                name = name.substring(0, name.length() - 1);
-
-                String sex = inputParam[count];
-                Date birthdate = simpleDateFormat.parse(inputParam[count + 1]);
-
-                if (sex.equals("м")) {
-                    Person p = allPeople.get(id);
-                    p.setName(name);
-                    p.setSex(Sex.MALE);
-                    p.setBirthDay(birthdate);
-                } else if (sex.equals("ж")) {
-                    Person p = allPeople.get(id);
-                    p.setName(name);
-                    p.setSex(Sex.FEMALE);
-                    p.setBirthDay(birthdate);
-                }
-            }
-            break;
-            case "-d": {
-                Person p = allPeople.get(Integer.parseInt(inputParam[0]));
-                p.setBirthDay(null);
-                p.setName(null);
-                p.setSex(null);
-            }
-            break;
-            case "-i": { //id: name sex (м/ж) bd (формат 15-Apr-1990)
-                int id = Integer.parseInt(inputParam[0]);
-                SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
-                Person p = allPeople.get(id);
-                String sex;
-                if (p.getSex() == Sex.MALE) {
-                    sex = "м";
-                } else sex = "ж";
-                System.out.println(p.getName() + " " + sex + " " + sdf.format(p.getBirthDay()));
-
-            }
-            break;
-        }
-
+       }
+       catch (IOException e){
+           System.out.println("атятя");
+       }
+       catch (IllegalArgumentException e){
+           System.out.println("неверный аргумент");
+       }
     }
 }
