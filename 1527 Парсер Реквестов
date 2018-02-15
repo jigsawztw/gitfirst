@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 Парсер реквестов
 */
 
-public class Solution {
+public class Solution { 
     public static void main(String[] args) throws IOException{
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         String x = bf.readLine();
