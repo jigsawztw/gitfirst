@@ -1,0 +1,34 @@
+import java.util.*;
+import java.io.*;
+/* 
+И еще один адаптер
+*/
+
+public class Solution {
+
+    public static void main(String[] args) throws FileNotFoundException {
+
+    }
+
+
+
+    public static class PersonScannerAdapter  implements PersonScanner{
+        private Scanner fileScanner;
+
+       public PersonScannerAdapter(Scanner fileScanner){
+            this.fileScanner=fileScanner;
+        }                                                                               //Иванов Иван Иванович 31 12 1950
+
+        @Override
+        public Person read() throws IOException {
+           String personinfo = fileScanner.nextLine();
+           String[] mass = personinfo.split(" ");
+            Calendar  x = new GregorianCalendar(Integer.parseInt(mass[5]),Integer.parseInt(mass[4])-1,Integer.parseInt(mass[3]));
+           return new Person(mass[1],mass[2],mass[0],x.getTime());
+        }
+        @Override
+        public void close() throws IOException {
+            this.fileScanner.close();
+        }
+    }
+}
